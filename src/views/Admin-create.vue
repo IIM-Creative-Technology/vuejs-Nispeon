@@ -18,7 +18,8 @@
 
         <div>
             <label for="addMD">Meta Description</label>
-            <input v-model="metaDesc" type="text" class="addInput" id="addMD" placeholder="Enter Meta description..." maxlength = "300">
+            <textarea v-model="metaDesc" class="addInput" id="addMD"
+                    placeholder="Enter Meta description..." maxlength="300"></textarea>
         </div>
         
     </div>
@@ -27,8 +28,8 @@
         <img :src="image" class="addImg">
 
         <div>
-            <label for="addMD">Add an Image</label>
-            <input v-model="image" type="text" placeholder="Enter URL...">    
+            <label for="addImg">Add an Image</label>
+            <input v-model="image" type="text" placeholder="Enter URL..." id="addImg">    
         </div>
         
          
@@ -36,7 +37,6 @@
 
     <div class="texDiv">
         <label for="addContent">Page Content</label>
-        <!-- <textarea id="addContent" class="addTexta"></textarea> -->
         <editor
             api-key="7286qcc0rvjna10mjhx3cdnk3dtltqf223x68s3f3cngsskb"
             :init="{
@@ -70,14 +70,14 @@ export default {
         }
     },
     computed: {
-        ...mapState(['tarray'])
+        ...mapState(['articles', 'articleCount'])
     },
     methods: {
         createArticle(){
 
             if(this.pageTitle != "" && this.metaTitle != "" && this.metaDesc != "" && this.image != "" && this.content != "") {
-                // let corr = this.content.replace(/(<([^>]+)>)/ig,"")
                 let article = {
+                    id: this.articleCount,
                     title: this.pageTitle,
                     metat: this.metaTitle,
                     metad: this.metaDesc,
@@ -86,9 +86,11 @@ export default {
                 }
 
                 this.$store.commit('ADD_DATA', article)
+                this.$store.commit('INCREASE_COUNT', this.articleCount)
+                console.log(this.articles)
                 alert('Article posted successfully') 
             } else {
-                console.log(this.tarray) 
+                console.log(this.articles) 
                 alert('Please fill up every field')
             }
             
@@ -138,6 +140,12 @@ export default {
         width: 100%;
     }
 
+    #addMD {
+        resize: none;
+        width: 80%;
+        height: 10vH;
+    }
+
     label {
         margin-right: 10px;
     }
@@ -148,6 +156,10 @@ export default {
         padding: 2vh;
         border-radius: 20px;
         cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgb(154, 252, 8);
     }
 
     button:focus {

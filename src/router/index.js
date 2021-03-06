@@ -1,8 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import BlogEdit from '../components/BlogEdit'
+import NotFound from '../views/NotFound'
 
 const routes = [
+  {
+    path: "/:catchAll(.*)",
+    component: NotFound,
+  },
   {
     path: '/',
     name: 'Home',
@@ -21,8 +26,9 @@ const routes = [
     name: 'Admin board',
     children: [
       {
-        path: '/admin-edit',
-        component: BlogEdit
+        path: '/admin-:id',
+        component: BlogEdit,
+        props: true
       }
     ],
     // route level code-splitting

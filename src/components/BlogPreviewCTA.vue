@@ -1,19 +1,21 @@
 <template>
-    <article v-for="post in tarray" :key="post" :id="'id' + tarray.indexOf(post)">
+    <article v-for="post in articles" :key="post" :id="'id' + articles.indexOf(post)">
 
         <img :src="post.img">
 
         <div class="artext">
-            <h2>{{post.title}}</h2>
+            <h2>{{post.metat}}#{{post.id}}</h2>
             <p v-html="post.metad"></p>  
         </div>
         
         <div class="arbut">
-            <router-link :to="{ path: getBlogEditLink() }">Éditer</router-link>
+            <router-link :to="'admin-' + post.id">Éditer</router-link>
             <button>Supprimer</button>  
         </div>
-
-        <router-view/>
+        
+        <div v-if="$route.params.id == post.id" class="editiv">
+            <router-view v-bind:post="post"/>
+        </div>
         
     </article>
 </template>
@@ -29,11 +31,11 @@ export default {
             
         }
     },computed: {
-        ...mapState(['tarray'])
+        ...mapState(['articles'])
     },    
     methods: {
-        getBlogEditLink: function(){
-            return '/admin-edit'
+        getBlogEditLink: function(id){
+            return '/admin-edit/' + id
         }
     },
     components: {
@@ -46,6 +48,7 @@ export default {
 
     article {
         border: solid 1px black;
+        border-radius:  0 40px 40px 0;
         margin: 5vh 10%;
         display: flex;
         align-items: center;
@@ -59,18 +62,34 @@ export default {
     }
 
     .artext {
-        width: 80%;
+        width: 60%;
         text-align: start;
         padding: 0 5%;
     }
 
     .arbut {
-        width: 20%;
+        width: 10%;
+    }
+
+    .editiv {
+        width: 100%;
+        padding: 3vH 10%;
+        margin-top: 5vh;
     }
 
     @media screen and (max-width: 769px){
         article {
             flex-direction: column;
+            border-radius: 40px ;
+        }
+
+        article img {
+            width: 70%;
+        }
+
+        .editiv {
+            padding: 0;
+            border-radius: 40px ;
         }
     }
 </style>
