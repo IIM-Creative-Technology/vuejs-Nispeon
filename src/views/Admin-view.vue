@@ -13,6 +13,7 @@
 <script>
 
   import BlogPreviewCTA from "@/components/BlogPreviewCTA";
+  
 
 export default {
 

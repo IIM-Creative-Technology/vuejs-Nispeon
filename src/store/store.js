@@ -2,7 +2,11 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    test: "cc",
+    admin: {
+        name: "Nispeon",
+        who: "Web Developer",
+        avatar: "https://cdn.discordapp.com/attachments/427932875837669389/817558129562222592/717151043418325013.gif"
+    },
     tarray: []
   },
   mutations: {

@@ -1,5 +1,7 @@
 <template>
 
+<h1>Create a new blog post</h1>
+
 <section class="flex">
 
     <div class="flex">
@@ -80,13 +82,14 @@ export default {
                     metat: this.metaTitle,
                     metad: this.metaDesc,
                     img: this.image,
-                    content: this.content
+                    content: this.content,
+                    preview: this.content.slice(0,300)
                 }
 
                 this.$store.commit('ADD_DATA', article)
-                console.log(article)
-                console.log(this.tarray)  
+                alert('Article posted successfully') 
             } else {
+                console.log(this.tarray) 
                 alert('Please fill up every field')
             }
             
@@ -115,7 +118,7 @@ export default {
     section.flex {
         display: flex;
         flex-wrap: wrap;
-        align-content: center;
+        align-items: center;
         justify-content: center;
     }
 
@@ -128,6 +131,7 @@ export default {
         justify-content: space-evenly;
         flex-direction: column;
         align-items: center;
+        min-height: 30vh;
         width: 45%;
     }
 
