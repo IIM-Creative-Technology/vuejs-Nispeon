@@ -28,12 +28,20 @@
             <label for="addMD">Add an Image</label>
             <input v-model="image" type="text" placeholder="Enter URL...">    
         </div>
+        
          
     </div>
 
     <div class="texDiv">
         <label for="addContent">Page Content</label>
-        <textarea id="addContent" class="addTexta"></textarea>
+        <!-- <textarea id="addContent" class="addTexta"></textarea> -->
+        <editor
+            api-key="7286qcc0rvjna10mjhx3cdnk3dtltqf223x68s3f3cngsskb"
+            :init="{
+                menubar: false
+            }"
+            v-model="content"
+        />
     </div>
     
     
@@ -46,6 +54,7 @@
 <script>
 
 import { mapState } from "vuex";
+import Editor from '@tinymce/tinymce-vue'
 
 export default {
     name: "Admin-create",
@@ -63,15 +72,28 @@ export default {
     },
     methods: {
         createArticle(){
-            let article = {
-                title: this.pageTitle,
-                content: this.content
-            }
 
-            this.$store.commit('ADD_DATA', article)
-            console.log(article)
-            console.log(this.tarray)
+            if(this.pageTitle != "" && this.metaTitle != "" && this.metaDesc != "" && this.image != "" && this.content != "") {
+                // let corr = this.content.replace(/(<([^>]+)>)/ig,"")
+                let article = {
+                    title: this.pageTitle,
+                    metat: this.metaTitle,
+                    metad: this.metaDesc,
+                    img: this.image,
+                    content: this.content
+                }
+
+                this.$store.commit('ADD_DATA', article)
+                console.log(article)
+                console.log(this.tarray)  
+            } else {
+                alert('Please fill up every field')
+            }
+            
         }
+    },
+    components: {
+        'editor': Editor
     }
 }
 </script>
