@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import BlogEdit from '../components/BlogEdit'
 
 const routes = [
   {
@@ -18,10 +19,17 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin board',
+    children: [
+      {
+        path: '/admin-edit',
+        component: BlogEdit
+      }
+    ],
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin-view.vue')
+
   },
   {
     path: '/admin-create',

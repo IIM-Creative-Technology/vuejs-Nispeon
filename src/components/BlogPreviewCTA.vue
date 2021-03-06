@@ -1,5 +1,5 @@
 <template>
-    <article v-for="post in tarray" :key="post">
+    <article v-for="post in tarray" :key="post" :id="'id' + tarray.indexOf(post)">
 
         <img :src="post.img">
 
@@ -9,9 +9,11 @@
         </div>
         
         <div class="arbut">
-            <button>Éditer</button>
+            <router-link :to="{ path: getBlogEditLink() }">Éditer</router-link>
             <button>Supprimer</button>  
         </div>
+
+        <router-view/>
         
     </article>
 </template>
@@ -30,7 +32,12 @@ export default {
         ...mapState(['tarray'])
     },    
     methods: {
-
+        getBlogEditLink: function(){
+            return '/admin-edit'
+        }
+    },
+    components: {
+        
     }
 }
 </script>
@@ -43,6 +50,8 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
 
     article img {
@@ -68,4 +77,5 @@ export default {
 
 <style>
     .artext p {line-break: anywhere;}
+
 </style>
