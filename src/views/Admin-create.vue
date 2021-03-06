@@ -7,18 +7,18 @@
     <div class="flex">
         <div>
             <label for="addPT">Page Title</label>
-            <input v-model="pageTitle" type="text" class="addInput" id="addPT" placeholder="Enter Page title..."> 
+            <input v-model="pageTitle" type="text" class="addInput" id="addPT" placeholder="Enter Page title..." maxlength = "50"> 
         </div>
         
         <div>
             <label for="addMT">Meta Title</label>
-            <input v-model="metaTitle" type="text" class="addInput" id="addMT" placeholder="Enter Meta title...">
+            <input v-model="metaTitle" type="text" class="addInput" id="addMT" placeholder="Enter Meta title..." maxlength = "50">
         </div>
         
 
         <div>
             <label for="addMD">Meta Description</label>
-            <input v-model="metaDesc" type="text" class="addInput" id="addMD" placeholder="Enter Meta description...">
+            <input v-model="metaDesc" type="text" class="addInput" id="addMD" placeholder="Enter Meta description..." maxlength = "300">
         </div>
         
     </div>
@@ -83,7 +83,6 @@ export default {
                     metad: this.metaDesc,
                     img: this.image,
                     content: this.content,
-                    preview: this.content.slice(0,300)
                 }
 
                 this.$store.commit('ADD_DATA', article)

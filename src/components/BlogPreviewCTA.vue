@@ -5,7 +5,7 @@
 
         <div class="artext">
             <h2>{{post.title}}</h2>
-            <p v-html="post.preview"></p>  
+            <p v-html="post.metad"></p>  
         </div>
         
         <div class="arbut">
