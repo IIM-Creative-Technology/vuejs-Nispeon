@@ -24,7 +24,7 @@
     article {
         border: solid 1px black;
         border-radius: 40px;
-        margin: 5vh 10%;
+        margin: 10vh 10% 0;
         padding: 3vh 5%;
         display: flex;
         align-items: center;

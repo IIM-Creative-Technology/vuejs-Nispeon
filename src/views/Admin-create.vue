@@ -77,7 +77,7 @@ export default {
 
         date: function() {
             let today = new Date();
-            let todate = `${this.day[(today.getDate()-1)]}` + ' ' + today.getDate() + ' ' + `${this.month[(today.getMonth())]}`; 
+            let todate = `${this.day[(today.getDay()-1)]}` + ' ' + today.getDate() + ' ' + `${this.month[(today.getMonth())]}`; 
             return todate; 
         }
     },
@@ -96,7 +96,7 @@ export default {
                     content: this.content,
                     date: this.date
                 }
-                
+
                 this.$store.commit('ADD_DATA', article)
                 this.$store.commit('INCREASE_COUNT', this.articleCount)
                 alert('Article posted successfully') 

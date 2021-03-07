@@ -9,8 +9,8 @@
         </div>
         
         <div class="arbut">
-            <router-link :to="'admin-' + post.id">Éditer</router-link>
-            <button v-on:click="remover(post.id)">Supprimer</button>  
+            <router-link :to="'admin-' + post.id">Edit</router-link>
+            <button v-on:click="remover(post.id)"><i class="fas fa-trash-alt"></i></button>  
         </div>
         
         <div v-if="$route.params.id == post.id" class="editiv">
@@ -50,7 +50,7 @@ export default {
     article {
         border: solid 1px black;
         border-radius:  0 40px 40px 0;
-        margin: 5vh 10%;
+        margin: 10vh 10% 0;
         display: flex;
         align-items: center;
         justify-content: center;

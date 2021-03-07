@@ -6,17 +6,20 @@
 
             <h1>{{post.title}}</h1>   
 
-            <p v-html="post.content"></p>
+            <p v-html="post.content" class="mainCont"></p>
 
-            <div>
-                <p>Posted on {{post.date}}</p>
+            <footer>
+                <p>Posted on <strong>{{post.date}}</strong></p>
 
                 <div>
                     <img :src="admin.avatar" class="avatar">
-                    <h3>{{admin.name}}</h3>
-                    <p>{{admin.who}}</p>
+                    <div>
+                        <h3>{{admin.name}}</h3>
+                        <p>{{admin.who}}</p> 
+                    </div>
+                    
                 </div>
-            </div>
+            </footer>
         </div>        
     </section>
 </template>
@@ -36,9 +39,37 @@ export default {
 <style scoped>
 
     .mainImg {
-        height: 50vH;
+        max-height: 50vH;
         border-radius: 40px;
         border: 5px rgb(190, 107, 59) solid;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .mainCont {
+        font-size: 3em;
+        line-break: anywhere;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    footer > div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .avatar {
+        width: 50%;
+        border-radius: 20px;
+        border: black 5px solid;
     }
 
 </style>
