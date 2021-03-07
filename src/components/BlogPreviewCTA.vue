@@ -26,11 +26,7 @@ import { mapState } from "vuex";
 
 export default {
     name: "BlogPreviewCTA",
-    data() {
-        return {
-            
-        }
-    },computed: {
+    computed: {
         ...mapState(['articles'])
     },    
     methods: {

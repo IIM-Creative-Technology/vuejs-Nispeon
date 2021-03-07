@@ -42,7 +42,7 @@
         </div>
 
 
-        <button v-on:click="updateArticle">Create</button>
+        <button v-on:click="updateArticle">Edit</button>
     </section>
 </template>
 
