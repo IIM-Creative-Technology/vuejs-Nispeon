@@ -4,7 +4,7 @@
         <img :src="post.img">
 
         <div class="artext">
-            <h2>{{post.metat}}#{{post.id}}</h2>
+            <h2>{{post.title}}#{{post.id}}</h2>
             <p v-html="post.metad"></p>  
         </div>
         

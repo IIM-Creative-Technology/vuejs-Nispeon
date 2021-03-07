@@ -74,10 +74,13 @@
             updateArticle() {
 
                 if (this.pageTitle != "" && this.metaTitle != "" && this.metaDesc != "" && this.image != "" && this.content != "") {
+
+                    let metitle = this.metaTitle.replaceAll(" ", "-")
+
                     let article = {
                         id: this.post.id,
                         title: this.pageTitle,
-                        metat: this.metaTitle,
+                        metat: metitle,
                         metad: this.metaDesc,
                         img: this.image,
                         content: this.content,

@@ -23,14 +23,23 @@ export default createStore({
         },
 
         UPDATE_DATA(state, newdata) {
-            state.articles[newdata.id] = newdata;
+
+            for( var i = 0; i < state.articles.length; i++){ 
+                
+                if ( state.articles[i].id == newdata.id) { 
+                    
+                    state.articles[i] = newdata;
+                }
+            
+            }
+
         },
 
         REMOVE_DATA(state, id) {
             for( var i = 0; i < state.articles.length; i++){ 
-                console.log(i)
+                
                 if ( state.articles[i].id == id) { 
-                    console.log(id + "success")
+                    
                     state.articles.splice(i, 1); 
                 }
             

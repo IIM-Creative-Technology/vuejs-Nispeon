@@ -62,6 +62,9 @@ export default {
     name: "Admin-create",
     data() {
         return {
+
+            day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satursday", "Sunday"],
+            month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             pageTitle: "",
             metaTitle: "",
             metaDesc: "",
@@ -70,21 +73,30 @@ export default {
         }
     },
     computed: {
-        ...mapState(['articles', 'articleCount'])
+        ...mapState(['articles', 'articleCount']),
+
+        date: function() {
+            let today = new Date();
+            let todate = `${this.day[(today.getDate()-1)]}` + ' ' + today.getDate() + ' ' + `${this.month[(today.getMonth())]}`; 
+            return todate; 
+        }
     },
     methods: {
         createArticle(){
 
             if(this.pageTitle != "" && this.metaTitle != "" && this.metaDesc != "" && this.image != "" && this.content != "") {
+
+                let metitle = this.metaTitle.replaceAll(" ", "-")
                 let article = {
                     id: this.articleCount,
                     title: this.pageTitle,
-                    metat: this.metaTitle,
+                    metat: metitle,
                     metad: this.metaDesc,
                     img: this.image,
                     content: this.content,
+                    date: this.date
                 }
-
+                
                 this.$store.commit('ADD_DATA', article)
                 this.$store.commit('INCREASE_COUNT', this.articleCount)
                 alert('Article posted successfully') 
