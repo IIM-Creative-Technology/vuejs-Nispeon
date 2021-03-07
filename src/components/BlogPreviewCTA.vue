@@ -10,7 +10,7 @@
         
         <div class="arbut">
             <router-link :to="'admin-' + post.id">Éditer</router-link>
-            <button>Supprimer</button>  
+            <button v-on:click="remover(post.id)">Supprimer</button>  
         </div>
         
         <div v-if="$route.params.id == post.id" class="editiv">
@@ -32,6 +32,11 @@ export default {
     methods: {
         getBlogEditLink: function(id){
             return '/admin-edit/' + id
+        },
+
+        remover(id){
+            this.$store.commit('REMOVE_DATA', id)
+            console.log(id + "from cta")
         }
     },
     components: {
