@@ -17,15 +17,14 @@ export default createStore({
         INCREASE_COUNT(state) {
             state.articleCount++
         },
-        
+
         ADD_DATA(state, data) {
             state.articles.push(data)
-        }
-    },
-    getters: {
-        getbyId(state) {
-            return (id) => state.articles.find(article => article.id === id);
         },
+
+        UPDATE_DATA(state, newdata) {
+            state.articles[newdata.id] = newdata;
+        }
     },
     actions: {},
     modules: {}

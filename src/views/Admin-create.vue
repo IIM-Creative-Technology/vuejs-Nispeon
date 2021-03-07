@@ -87,10 +87,8 @@ export default {
 
                 this.$store.commit('ADD_DATA', article)
                 this.$store.commit('INCREASE_COUNT', this.articleCount)
-                console.log(this.articles)
                 alert('Article posted successfully') 
             } else {
-                console.log(this.articles) 
                 alert('Please fill up every field')
             }
             

@@ -17,8 +17,8 @@
 
             <div>
                 <label for="addMD">Meta Description</label>
-                <textarea v-model="metaDesc" class="addInput" id="addMD"
-                    placeholder="Enter Meta description..." maxlength="300"></textarea>
+                <textarea v-model="metaDesc" class="addInput" id="addMD" placeholder="Enter Meta description..."
+                    maxlength="300"></textarea>
             </div>
 
         </div>
@@ -42,16 +42,20 @@
         </div>
 
 
-        <button v-on:click="createArticle">Create</button>
+        <button v-on:click="updateArticle">Create</button>
     </section>
 </template>
 
 <script>
     import Editor from '@tinymce/tinymce-vue'
+    import { mapState } from 'vuex';
 
 
     export default {
         name: "BlogEdit",
+        computed: {
+            ...mapState(['articles', 'articleCount'])
+        },  
         data() {
             return {
                 pageTitle: this.post.title,
@@ -64,6 +68,28 @@
         props: {
             post: {
                 type: Array
+            }
+        },
+        methods: {
+            updateArticle() {
+
+                if (this.pageTitle != "" && this.metaTitle != "" && this.metaDesc != "" && this.image != "" && this.content != "") {
+                    let article = {
+                        id: this.post.id,
+                        title: this.pageTitle,
+                        metat: this.metaTitle,
+                        metad: this.metaDesc,
+                        img: this.image,
+                        content: this.content,
+                    }
+
+                    this.$store.commit('UPDATE_DATA', article)
+                    
+                    alert('Article updated successfully')
+                } else {
+                    alert('Please fill up every field')
+                }
+
             }
         },
         components: {
@@ -147,8 +173,8 @@
             justify-content: space-evenly;
         }
 
-        .editiv > section {
-            border-radius: 40px ;
+        .editiv>section {
+            border-radius: 40px;
         }
 
         .texDiv {
