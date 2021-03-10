@@ -10,7 +10,7 @@
         
         <div class="arbut">
             <router-link :to="'admin-' + post.id">Edit</router-link>
-            <button v-on:click="remover(post.id)"><i class="fas fa-trash-alt"></i></button>  
+            <button v-on:click="remover(post.id)">Delete</button>  
         </div>
         
         <div v-if="$route.params.id == post.id" class="editiv">
