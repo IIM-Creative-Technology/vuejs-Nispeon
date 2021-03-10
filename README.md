@@ -1,24 +1,15 @@
-# rendu-semaine
+# Rendu pour la semaine de VueJS
 
-## Project setup
+## Installation
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Lancement du serveur de production
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Notice
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Le site est fonctionnel, bien que manquant de CSS. J'ai préféré me concentrer sur les fonctionalités plutôt que l'apparence.
