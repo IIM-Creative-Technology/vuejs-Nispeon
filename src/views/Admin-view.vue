@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <header>    
-        <router-link to="/admin-create">Create an article</router-link>
+        <router-link to="/admin-create" class="link">Create an article</router-link>
     </header>
 
     <main>
@@ -27,6 +27,20 @@ export default {
 </script>
 
 <style>
+
+.link {
+  text-decoration: none;
+  color: #2c3e50;
+  border: #2c3e50 dotted 1px;
+  padding: 1vH;
+  border-radius: 50px;
+}
+
+.link:hover {
+  color: #42b983;
+  border: #42b983 dotted 1px;
+}
+
 .body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;

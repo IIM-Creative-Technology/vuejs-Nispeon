@@ -9,8 +9,8 @@
         </div>
         
         <div class="arbut">
-            <router-link :to="'admin-' + post.id">Edit</router-link>
-            <button v-on:click="remover(post.id)">Delete</button>  
+            <router-link :to="'admin-' + post.id" class="edit">Edit</router-link>
+            <button v-on:click="remover(post.id)" class="edit red">Delete</button>  
         </div>
         
         <div v-if="$route.params.id == post.id" class="editiv">
@@ -46,6 +46,21 @@ export default {
 </script>
 
 <style scoped>
+
+    .edit{
+        border: none;
+        background: none;
+        text-decoration: none;
+        color: #42b983;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .edit.red {
+        color: rgb(189, 33, 33);
+    }
 
     article {
         border: solid 1px black;
